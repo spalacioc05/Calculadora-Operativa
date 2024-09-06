@@ -5,6 +5,7 @@
 package calculadoraOperativa;
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 import Interfaces.Operation;
 import Utilities.Lectura;
@@ -13,25 +14,23 @@ import Utilities.Lectura;
  * @author spala
  */
 
-
-
 public class CombinedOperations implements Operation {
-    private final BufferedReader reader;
+    BufferedReader bIn = new BufferedReader(new InputStreamReader(System.in));
 
-    public CombinedOperations(BufferedReader reader) {
-        this.reader = reader;
+    public CombinedOperations(BufferedReader bIn) {
+        this.bIn = bIn;
     }
 
     @Override
     public void execute() {
         try {
-            int num = Integer.parseInt(Lectura.tecladoLinea(reader, "Enter a number: "));
+            int num = (int) Lectura.tecladoInt(bIn, "Enter a number: ");
             num += 5;
             System.out.println("After adding 5: " + num);
             num *= 2;
             System.out.println("After multiplying by 2: " + num);
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Error: " + e.getMessage());
         }
     }
 }

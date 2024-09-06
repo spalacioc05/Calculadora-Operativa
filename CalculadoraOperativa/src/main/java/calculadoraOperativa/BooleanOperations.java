@@ -5,6 +5,7 @@
 package calculadoraOperativa;
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 import Interfaces.Operation;
 import Utilities.Lectura;
@@ -16,21 +17,21 @@ import Utilities.Lectura;
 
 
 public class BooleanOperations implements Operation {
-    private final BufferedReader reader;
+    BufferedReader bIn = new BufferedReader(new InputStreamReader(System.in));
 
-    public BooleanOperations(BufferedReader reader) {
-        this.reader = reader;
+    public BooleanOperations(BufferedReader bIn) {
+        this.bIn = bIn;
     }
 
     @Override
     public void execute() {
         try {
-            boolean bool1 = Boolean.parseBoolean(Lectura.tecladoLinea(reader, "Enter first boolean: "));
-            boolean bool2 = Boolean.parseBoolean(Lectura.tecladoLinea(reader, "Enter second boolean: "));
+            boolean bool1 = Boolean.parseBoolean(Lectura.tecladoLinea(bIn, "Enter first boolean: "));
+            boolean bool2 = Boolean.parseBoolean(Lectura.tecladoLinea(bIn, "Enter second boolean: "));
             System.out.println("Boolean AND: " + (bool1 && bool2));
             System.out.println("Boolean OR: " + (bool1 || bool2));
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Error: " + e.getMessage());
         }
     }
 }

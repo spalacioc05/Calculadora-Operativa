@@ -5,6 +5,7 @@
 package calculadoraOperativa;
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 import Interfaces.Operation;
 import Utilities.Lectura;
@@ -15,21 +16,22 @@ import Utilities.Lectura;
 
 
 
-public class ConditionalOperations implements Operation {
-    private final BufferedReader reader;
+public class ConditionalOperations implements Operation{
 
-    public ConditionalOperations(BufferedReader reader) {
-        this.reader = reader;
+    BufferedReader bIn = new BufferedReader(new InputStreamReader(System.in));
+
+    public ConditionalOperations(BufferedReader bIn) {
+        this.bIn = bIn;
     }
 
     @Override
     public void execute() {
         try {
-            int num = Integer.parseInt(Lectura.tecladoLinea(reader, "Enter a number: "));
+            int num = (int) Lectura.tecladoInt(bIn, "Enter a number: ");
             String result = (num > 0) ? "Positive" : "Non-positive";
             System.out.println("The number is: " + result);
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Error: " + e.getMessage());
         }
     }
 }

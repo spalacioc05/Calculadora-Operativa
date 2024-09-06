@@ -5,6 +5,7 @@
 package calculadoraOperativa;
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 import Interfaces.Operation;
 import Utilities.Lectura;
@@ -16,22 +17,22 @@ import Utilities.Lectura;
 
 
 public class PriorityOperations implements Operation {
-    private final BufferedReader reader;
+    BufferedReader bIn = new BufferedReader(new InputStreamReader(System.in));
 
-    public PriorityOperations(BufferedReader reader) {
-        this.reader = reader;
+    public PriorityOperations(BufferedReader bIn) {
+        this.bIn = bIn;
     }
 
     @Override
     public void execute() {
         try {
-            double num1 = Double.parseDouble(Lectura.tecladoLinea(reader, "Enter first number: "));
-            double num2 = Double.parseDouble(Lectura.tecladoLinea(reader, "Enter second number: "));
-            double num3 = Double.parseDouble(Lectura.tecladoLinea(reader, "Enter third number: "));
+            double num2 = (double) Lectura.tecladoDouble(bIn, "Enter second number: ");
+            double num3 = (double) Lectura.tecladoDouble(bIn, "Enter third number: ");
+            double num1 = (double) Lectura.tecladoDouble(bIn, "Enter first number: ");
             System.out.println("Result of num1 + num2 * num3: " + (num1 + num2 * num3));
             System.out.println("Result of (num1 + num2) * num3: " + ((num1 + num2) * num3));
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Error: " + e.getMessage());
         }
     }
 }

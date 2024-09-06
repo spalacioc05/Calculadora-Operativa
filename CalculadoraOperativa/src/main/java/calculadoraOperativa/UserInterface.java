@@ -16,10 +16,10 @@ import Utilities.Lectura;
 
 
 public class UserInterface {
-    private final BufferedReader reader;
+    BufferedReader bIn = new BufferedReader(new InputStreamReader(System.in));
 
     public UserInterface() {
-        this.reader = new BufferedReader(new InputStreamReader(System.in));
+        this.bIn = new BufferedReader(new InputStreamReader(System.in));
     }
 
     public void displayMenu() {
@@ -36,38 +36,38 @@ public class UserInterface {
     }
 
     public int getUserChoice() throws IOException {
-        return Integer.parseInt(Lectura.tecladoLinea(reader, "Enter your choice: "));
+        return (int) Lectura.tecladoInt(bIn, "Enter your choice: ");
     }
 
     public void executeOperation(int choice) {
         try {
             switch (choice) {
                 case 1 -> {
-                    ArithmeticOperations arithmeticOperations = new ArithmeticOperations(reader);
+                    ArithmeticOperations arithmeticOperations = new ArithmeticOperations(bIn);
                     arithmeticOperations.execute();
                 }
                 case 2 -> {
-                    RelationalOperations relationalOperations = new RelationalOperations(reader);
+                    RelationalOperations relationalOperations = new RelationalOperations(bIn);
                     relationalOperations.execute();
                 }
                 case 3 -> {
-                    BitwiseOperations bitwiseOperations = new BitwiseOperations(reader);
+                    BitwiseOperations bitwiseOperations = new BitwiseOperations(bIn);
                     bitwiseOperations.execute();
                 }
                 case 4 -> {
-                    BooleanOperations booleanOperations = new BooleanOperations(reader);
+                    BooleanOperations booleanOperations = new BooleanOperations(bIn);
                     booleanOperations.execute();
                 }
                 case 5 -> {
-                    CombinedOperations combinedOperations = new CombinedOperations(reader);
+                    CombinedOperations combinedOperations = new CombinedOperations(bIn);
                     combinedOperations.execute();
                 }
                 case 6 -> {
-                    ConditionalOperations conditionalOperations = new ConditionalOperations(reader);
+                    ConditionalOperations conditionalOperations = new ConditionalOperations(bIn);
                     conditionalOperations.execute();
                 }
                 case 7 -> {
-                    PriorityOperations priorityOperations = new PriorityOperations(reader);
+                    PriorityOperations priorityOperations = new PriorityOperations(bIn);
                     priorityOperations.execute();
                 }
                 case 8 -> {
@@ -84,7 +84,7 @@ public class UserInterface {
     }
 
     public BufferedReader getReader() {
-        return reader;
+        return bIn;
     }
 
     public void Menu(){
