@@ -16,20 +16,48 @@ import Utilities.Lectura;
 
 public class BitwiseOperations implements Operation {
     BufferedReader bIn = new BufferedReader(new InputStreamReader(System.in));
+    ArithmeticOperations arithmeticOperations = new ArithmeticOperations();
 
-    public BitwiseOperations(BufferedReader bIn) {
-        this.bIn = bIn;
+    private int binarioABase10(String binario) {
+        return Integer.parseInt(binario, 2);
+    }
+
+    private String base10ABinario(int numero) {
+        return Integer.toBinaryString(numero);
     }
 
     @Override
     public void execute() {
         try {
-            int num1 = (int) Lectura.tecladoInt(bIn, "Enter first number: ");
-            int num2 = (int) Lectura.tecladoInt(bIn, "Enter second number: ");
-            System.out.println("Bitwise AND: " + (num1 & num2));
-            System.out.println("Bitwise OR: " + (num1 | num2));
-            System.out.println("Bitwise XOR: " + (num1 ^ num2));
+
+            String binario = Lectura.tecladoLinea(bIn, "Ingresa un número binario: ");
+            int base10 = Lectura.tecladoInt(bIn, "Ingresa un número en base 10: ");
+
+            int numBinarioBase10 = binarioABase10(binario);
+
+            double suma = arithmeticOperations.suma(numBinarioBase10, base10);
+            double resta = arithmeticOperations.resta(numBinarioBase10, base10);
+            double multiplicacion = arithmeticOperations.multiplicacion(numBinarioBase10, base10);
+            double division = arithmeticOperations.division(numBinarioBase10, base10);
+            double modulo = arithmeticOperations.modulo(numBinarioBase10, base10);
+
+            System.out.println("Resultados en base 10:");
+            System.out.println("Suma: " + suma);
+            System.out.println("Resta: " + resta);
+            System.out.println("Multiplicación: " + multiplicacion);
+            System.out.println("División: " + division);
+            System.out.println("Módulo: " + modulo);
+
+            System.out.println("Resultados en binario:");
+            System.out.println("Suma: " + base10ABinario((int) suma));
+            System.out.println("Resta: " + base10ABinario((int) resta));
+            System.out.println("Multiplicación: " + base10ABinario((int) multiplicacion));
+            System.out.println("División: " + base10ABinario((int) division));
+            System.out.println("Módulo: " + base10ABinario((int) modulo));
+
         } catch (IOException e) {
+            System.out.println("Error: " + e.getMessage());
+        } catch (ArithmeticException e) {
             System.out.println("Error: " + e.getMessage());
         }
     }

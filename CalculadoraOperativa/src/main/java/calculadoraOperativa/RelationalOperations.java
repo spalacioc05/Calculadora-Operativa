@@ -19,18 +19,15 @@ import Utilities.Lectura;
 public class RelationalOperations implements Operation {
     BufferedReader bIn = new BufferedReader(new InputStreamReader(System.in));
 
-    public RelationalOperations(BufferedReader bIn) {
-        this.bIn = bIn;
-    }
 
     @Override
     public void execute() {
         try {
-            double num1 = (double) Lectura.tecladoDouble(bIn, "Enter first number: ");
-            double num2 = (double) Lectura.tecladoDouble(bIn, "Enter second number: ");
-            System.out.println("Greater than: " + (num1 > num2));
-            System.out.println("Less than: " + (num1 < num2));
-            System.out.println("Equal to: " + (num1 == num2));
+            double num1 = Lectura.tecladoDouble(bIn, "Ingresa el primer número: ");
+            double num2 = Lectura.tecladoDouble(bIn, "Ingresa el segundo número: ");
+            System.out.println("Mayor que: " + (num1 > num2));
+            System.out.println("Menor que: " + (num1 < num2));
+            System.out.println("Igual a: " + (num1 == num2));
         } catch (IOException e) {
             System.out.println("Error: " + e.getMessage());
         }

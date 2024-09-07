@@ -15,21 +15,17 @@ import Utilities.Lectura;
  */
 
 
-
 public class ConditionalOperations implements Operation{
 
     BufferedReader bIn = new BufferedReader(new InputStreamReader(System.in));
 
-    public ConditionalOperations(BufferedReader bIn) {
-        this.bIn = bIn;
-    }
 
     @Override
     public void execute() {
         try {
-            int num = (int) Lectura.tecladoInt(bIn, "Enter a number: ");
-            String result = (num > 0) ? "Positive" : "Non-positive";
-            System.out.println("The number is: " + result);
+            int num = (int) Lectura.tecladoInt(bIn, "Ingresa un número: ");
+            String result = (num > 0) ? "Positivo" : "No positivo";
+            System.out.println("El número es: " + result);
         } catch (IOException e) {
             System.out.println("Error: " + e.getMessage());
         }

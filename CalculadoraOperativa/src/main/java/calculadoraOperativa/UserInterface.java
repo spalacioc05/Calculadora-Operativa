@@ -23,63 +23,63 @@ public class UserInterface {
     }
 
     public void displayMenu() {
-        System.out.println("Welcome to the Calculator of Life!");
-        System.out.println("Please select an operation:");
-        System.out.println("1. Arithmetic Operations");
-        System.out.println("2. Relational Operations");
-        System.out.println("3. Bitwise Operations");
-        System.out.println("4. Boolean Operations");
-        System.out.println("5. Combined Incremental and Arithmetic Operations");
-        System.out.println("6. Conditional and String Operations");
-        System.out.println("7. Priority between Arithmetic Operators");
-        System.out.println("8. Exit");
+        System.out.println("¡Bienvenido a la Calculadora de la Vida!");
+        System.out.println("Por favor, selecciona una operación:");
+        System.out.println("1. Operaciones Aritméticas");
+        System.out.println("2. Operaciones Relacionales");
+        System.out.println("3. Operaciones a Nivel de Bits");
+        System.out.println("4. Operaciones Booleanas");
+        System.out.println("5. Operaciones Combinadas Incrementales y Aritméticas");
+        System.out.println("6. Operaciones Condicionales y de Cadenas");
+        System.out.println("7. Prioridad entre Operadores Aritméticos");
+        System.out.println("8. Salir");
     }
 
     public int getUserChoice() throws IOException {
-        return (int) Lectura.tecladoInt(bIn, "Enter your choice: ");
+        return (int) Lectura.tecladoInt(bIn, "Ingresa tu elección: ");
     }
 
     public void executeOperation(int choice) {
         try {
             switch (choice) {
                 case 1 -> {
-                    ArithmeticOperations arithmeticOperations = new ArithmeticOperations(bIn);
+                    ArithmeticOperations arithmeticOperations = new ArithmeticOperations();
                     arithmeticOperations.execute();
                 }
                 case 2 -> {
-                    RelationalOperations relationalOperations = new RelationalOperations(bIn);
+                    RelationalOperations relationalOperations = new RelationalOperations();
                     relationalOperations.execute();
                 }
                 case 3 -> {
-                    BitwiseOperations bitwiseOperations = new BitwiseOperations(bIn);
+                    BitwiseOperations bitwiseOperations = new BitwiseOperations();
                     bitwiseOperations.execute();
                 }
                 case 4 -> {
-                    BooleanOperations booleanOperations = new BooleanOperations(bIn);
+                    BooleanOperations booleanOperations = new BooleanOperations();
                     booleanOperations.execute();
                 }
                 case 5 -> {
-                    CombinedOperations combinedOperations = new CombinedOperations(bIn);
+                    CombinedOperations combinedOperations = new CombinedOperations();
                     combinedOperations.execute();
                 }
                 case 6 -> {
-                    ConditionalOperations conditionalOperations = new ConditionalOperations(bIn);
+                    ConditionalOperations conditionalOperations = new ConditionalOperations();
                     conditionalOperations.execute();
                 }
                 case 7 -> {
-                    PriorityOperations priorityOperations = new PriorityOperations(bIn);
+                    PriorityOperations priorityOperations = new PriorityOperations();
                     priorityOperations.execute();
                 }
                 case 8 -> {
-                    System.out.println("Exiting the calculator. Goodbye!");
+                    System.out.println("Saliendo de la calculadora. ¡Adiós!");
                     break;
                 }
-                default -> System.out.println("Invalid choice. Please try again.");
+                default -> System.out.println("Elección inválida. Por favor, inténtalo de nuevo.");
             }
         //} catch (IOException e) {
-            //System.err.println("Error reading input: " + e.getMessage());
+            //System.err.println("Error leyendo la entrada: " + e.getMessage());
         } catch (NumberFormatException e) {
-            System.err.println("Invalid input. Please enter a number.");
+            System.err.println("Entrada inválida. Por favor, ingresa un número.");
         }
     }
 
@@ -100,10 +100,10 @@ public class UserInterface {
                 }
                 executeOperation(choice);
             } catch (IOException e) {
-                System.err.println("An error occurred: " + e.getMessage());
+                System.err.println("Ocurrió un error: " + e.getMessage());
             }
         }
 
     }
-    
+
 }

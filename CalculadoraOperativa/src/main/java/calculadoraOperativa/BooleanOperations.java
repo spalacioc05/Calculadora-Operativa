@@ -18,18 +18,13 @@ import Utilities.Lectura;
 
 public class BooleanOperations implements Operation {
     BufferedReader bIn = new BufferedReader(new InputStreamReader(System.in));
-
-    public BooleanOperations(BufferedReader bIn) {
-        this.bIn = bIn;
-    }
-
     @Override
     public void execute() {
         try {
-            boolean bool1 = Boolean.parseBoolean(Lectura.tecladoLinea(bIn, "Enter first boolean: "));
-            boolean bool2 = Boolean.parseBoolean(Lectura.tecladoLinea(bIn, "Enter second boolean: "));
-            System.out.println("Boolean AND: " + (bool1 && bool2));
-            System.out.println("Boolean OR: " + (bool1 || bool2));
+            boolean bool1 = Lectura.tecladoBoolean(bIn, "Ingresa el primer booleano: ");
+            boolean bool2 = Lectura.tecladoBoolean(bIn, "Ingresa el segundo booleano: ");
+            System.out.println("AND booleano: " + (bool1 && bool2));
+            System.out.println("OR booleano: " + (bool1 || bool2));
         } catch (IOException e) {
             System.out.println("Error: " + e.getMessage());
         }

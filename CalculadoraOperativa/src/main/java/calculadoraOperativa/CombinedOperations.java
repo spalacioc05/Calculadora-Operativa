@@ -17,18 +17,14 @@ import Utilities.Lectura;
 public class CombinedOperations implements Operation {
     BufferedReader bIn = new BufferedReader(new InputStreamReader(System.in));
 
-    public CombinedOperations(BufferedReader bIn) {
-        this.bIn = bIn;
-    }
-
     @Override
     public void execute() {
         try {
-            int num = (int) Lectura.tecladoInt(bIn, "Enter a number: ");
+            int num = Lectura.tecladoInt(bIn, "Ingresa un número: ");
             num += 5;
-            System.out.println("After adding 5: " + num);
+            System.out.println("Después de sumar 5: " + num);
             num *= 2;
-            System.out.println("After multiplying by 2: " + num);
+            System.out.println("Después de multiplicar por 2: " + num);
         } catch (IOException e) {
             System.out.println("Error: " + e.getMessage());
         }
