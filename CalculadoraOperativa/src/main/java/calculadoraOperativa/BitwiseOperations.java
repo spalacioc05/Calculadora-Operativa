@@ -16,48 +16,20 @@ import Utilities.Lectura;
 
 public class BitwiseOperations implements Operation {
     BufferedReader bIn = new BufferedReader(new InputStreamReader(System.in));
-    ArithmeticOperations arithmeticOperations = new ArithmeticOperations();
 
-    private int binarioABase10(String binario) {
-        return Integer.parseInt(binario, 2);
-    }
-
-    private String base10ABinario(int numero) {
-        return Integer.toBinaryString(numero);
+    public BitwiseOperations(BufferedReader bIn) {
+        this.bIn = bIn;
     }
 
     @Override
     public void execute() {
         try {
-
-            String binario = Lectura.tecladoLinea(bIn, "Ingresa un número binario: ");
-            int base10 = Lectura.tecladoInt(bIn, "Ingresa un número en base 10: ");
-
-            int numBinarioBase10 = binarioABase10(binario);
-
-            double suma = arithmeticOperations.suma(numBinarioBase10, base10);
-            double resta = arithmeticOperations.resta(numBinarioBase10, base10);
-            double multiplicacion = arithmeticOperations.multiplicacion(numBinarioBase10, base10);
-            double division = arithmeticOperations.division(numBinarioBase10, base10);
-            double modulo = arithmeticOperations.modulo(numBinarioBase10, base10);
-
-            System.out.println("Resultados en base 10:");
-            System.out.println("Suma: " + suma);
-            System.out.println("Resta: " + resta);
-            System.out.println("Multiplicación: " + multiplicacion);
-            System.out.println("División: " + division);
-            System.out.println("Módulo: " + modulo);
-
-            System.out.println("Resultados en binario:");
-            System.out.println("Suma: " + base10ABinario((int) suma));
-            System.out.println("Resta: " + base10ABinario((int) resta));
-            System.out.println("Multiplicación: " + base10ABinario((int) multiplicacion));
-            System.out.println("División: " + base10ABinario((int) division));
-            System.out.println("Módulo: " + base10ABinario((int) modulo));
-
+            int num1 = (int) Lectura.tecladoInt(bIn, "Ingresa el primer número: ");
+            int num2 = (int) Lectura.tecladoInt(bIn, "Ingresa el segundo número: ");
+            System.out.println("AND a nivel de bits: " + (num1 & num2));
+            System.out.println("OR a nivel de bits: " + (num1 | num2));
+            System.out.println("XOR a nivel de bits: " + (num1 ^ num2));
         } catch (IOException e) {
-            System.out.println("Error: " + e.getMessage());
-        } catch (ArithmeticException e) {
             System.out.println("Error: " + e.getMessage());
         }
     }
