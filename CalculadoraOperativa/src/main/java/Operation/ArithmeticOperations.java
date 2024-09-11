@@ -99,6 +99,12 @@ public class ArithmeticOperations implements ArithmeticInterface {
         }
         return a %= b;
     }
+
+    @Override
+    public String positiveOrNegative(double a) {
+        String result = (a > 0) ? "Positivo" : "No positivo";
+        return result;
+    }
     
 }
  

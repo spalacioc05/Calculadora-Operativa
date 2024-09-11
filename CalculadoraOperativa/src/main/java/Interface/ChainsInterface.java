@@ -4,11 +4,13 @@
  */
 package Interface;
 
-/**
- *
- * @author spala
- */
-
 public interface ChainsInterface {
-    
+    String concatenate(String a, String b);
+    int length(String a);
+    String substring(String a, int start, int end);
+    boolean contains(String a, String b);
+    String toUpperCase(String a);
+    String toLowerCase(String a);
+    boolean equals(String a, String b);
+    String replace(String a, String target, String replacement);
 }

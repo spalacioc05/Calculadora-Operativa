@@ -26,5 +26,6 @@ public interface ArithmeticInterface {
     double increaseMultiply(double a, double b);
     double increaseDivide(double a, double b);
     double increaseModule(double a, double b);
+    String positiveOrNegative(double a);
     
 }
