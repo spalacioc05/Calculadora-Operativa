@@ -30,14 +30,14 @@ public class UserInterface {
 
         while (true) {
             try {
-                System.out.println("¡Bienvenido a la Calculadora de la Vida!");
-                System.out.println("Por favor, selecciona una operación:");
+                System.out.println("\n¡Bienvenido a la Calculadora Operativa!");
+                System.out.println("\nPor favor, selecciona una operación:");
                 System.out.println("1. Operaciones Aritméticas");
                 System.out.println("2. Operaciones a Nivel de Bits y Binarios");
                 System.out.println("3. Operaciones con cadenas y Strings");
                 System.out.println("4. Salir");
                 
-                int opcion = Lectura.tecladoInt(bIn, "Ingresa tu elección: ");
+                int opcion = Lectura.tecladoInt(bIn, "\nIngresa tu elección: ");
                 
                 try {
                     switch (opcion) {
@@ -48,17 +48,17 @@ public class UserInterface {
                             MenuBinary();
                         }
                         case 3 -> {
-                            
+                            MenuChains();
                         }
                         case 4 -> {
-                            System.out.println("Saliendo de la calculadora. ¡Adiós!");
+                            System.out.println("\nSaliendo de la calculadora. ¡Adiós!");
                             return;
                         }
-                        default -> System.out.println("Elección inválida. Por favor, inténtalo de nuevo.");
+                        default -> System.out.println("\nElección inválida. Por favor, inténtalo de nuevo.");
                     }
                     
                 } catch (NumberFormatException e) {
-                    System.err.println("Entrada inválida. Por favor, ingresa un número.");
+                    System.err.println("\nEntrada inválida. Por favor, ingresa un número.");
                 }
             } catch (IOException ex) {
             }
@@ -71,27 +71,27 @@ public class UserInterface {
         
         while (true) {
             try {
-            System.out.println("Seleccione una opción:");
+            System.out.println("\nSeleccione una opción:");
             System.out.println("1. Operaciones a nivel de bits y binario");
             System.out.println("3. Operaciones con bits");
             System.out.println("4. Salir");
             
-            int opcion = Lectura.tecladoInt(bIn, "Opción: ");
+            int opcion = Lectura.tecladoInt(bIn, "\nOpción: \n");
             
             switch (opcion) {
                 case 1 -> {
-                    int decimal = Lectura.tecladoInt(bIn, "Ingrese un número decimal: ");
+                    int decimal = Lectura.tecladoInt(bIn, "\nIngrese un número decimal: ");
                     String binario = binaryOperations.decimalToBinary(decimal);
                     System.out.println("Binario: " + binario);
                 }
                 case 2 -> {
-                    String bin = Lectura.tecladoLinea(bIn, "Ingrese un número binario: ");
+                    String bin = Lectura.tecladoLinea(bIn, "\nIngrese un número binario: ");
                     int dec = binaryOperations.binaryToDecimal(bin);
                     System.out.println("Decimal: " + dec);
                 }
                 case 3 -> {
-                    int num1 = Lectura.tecladoInt(bIn, "Ingrese el primer número: ");
-                    int num2 = Lectura.tecladoInt(bIn, "Ingrese el segundo número: ");
+                    int num1 = Lectura.tecladoInt(bIn, "\nIngrese el primer número: ");
+                    int num2 = Lectura.tecladoInt(bIn, "Ingrese el segundo número: \n");
                     
                     System.out.println("AND: " + binaryOperations.bitwiseAnd(num1, num2));
                     System.out.println("OR: " + binaryOperations.bitwiseOr(num1, num2));
@@ -104,10 +104,10 @@ public class UserInterface {
                     System.out.println("Right Shift (segundo número): " + binaryOperations.rightShift(num2, 1));
                 }
                 case 4 -> {
-                    System.out.println("Saliendo...");
+                    System.out.println("\nSaliendo...");
                     return;
                 }
-                default -> System.out.println("Opción no válida. Intente de nuevo.");
+                default -> System.out.println("\nOpción no válida. Intente de nuevo.");
             }
             } catch (IOException ex) {
             }
@@ -120,17 +120,17 @@ public class UserInterface {
         
         while (true) {
             try {
-                System.out.println("Seleccione una opción:");
+                System.out.println("\nSeleccione una opción:");
                 System.out.println("1. Operaciones con dos números");
                 System.out.println("2. Prioridad entre operadores");
                 System.out.println("3. Salir");
                 
-                int opcion = Lectura.tecladoInt(bIn, "Opción: ");
+                int opcion = Lectura.tecladoInt(bIn, "\nOpción: \n");
                 
                 switch (opcion) {
                     case 1 -> {
-                        double num1 = Lectura.tecladoDouble(bIn, "Ingrese el primer número: ");
-                        double num2 = Lectura.tecladoDouble(bIn, "Ingrese el segundo número: ");
+                        double num1 = Lectura.tecladoDouble(bIn, "\nIngrese el primer número: ");
+                        double num2 = Lectura.tecladoDouble(bIn, "Ingrese el segundo número: \n");
                         
                         System.out.println("Suma: " + arithmeticOperations.add(num1, num2));
                         System.out.println("Resta: " + arithmeticOperations.subtract(num1, num2));
@@ -150,34 +150,38 @@ public class UserInterface {
                         System.out.println("Factorial del segundo número: " + arithmeticOperations.factorial(num2V));
                     }
                     case 2 -> {
-                        int cantidadNumeros = Lectura.tecladoInt(bIn, "¿Cuántos números va a ingresar?: ");
-                        double resultado = Lectura.tecladoDouble(bIn, "Ingrese el primer número: ");
+                        int cantidadNumeros = Lectura.tecladoInt(bIn, "\n¿Cuántos números va a ingresar?: ");
+                        double resultado = Lectura.tecladoDouble(bIn, "Ingrese el primer número: \n");
                         
                         for (int i = 1; i < cantidadNumeros; i++) {
-                            String operador = Lectura.tecladoLinea(bIn, "Ingrese el operador (+, -, *, /): ");
-                            double numero = Lectura.tecladoDouble(bIn, "Ingrese el siguiente número: ");
+                            String operador = Lectura.tecladoLinea(bIn, "\nIngrese el operador (+, -, *, /): ");
+                            double numero = Lectura.tecladoDouble(bIn, "Ingrese el siguiente número: \n");
                             
                             switch (operador) {
                                 case "+" -> resultado = arithmeticOperations.add(resultado, numero);
                                 case "-" -> resultado = arithmeticOperations.subtract(resultado, numero);
                                 case "*" -> resultado = arithmeticOperations.multiply(resultado, numero);
                                 case "/" -> resultado = arithmeticOperations.divide(resultado, numero);
-                                default -> System.out.println("Operador no válido. Intente de nuevo.");
+                                default -> System.out.println("\nOperador no válido. Intente de nuevo.");
                             }
                         }
                         
-                        System.out.println("Resultado: " + resultado);
+                        System.out.println("\nResultado: " + resultado);
                     }
                     case 3 -> {
-                        System.out.println("Saliendo...");
+                        System.out.println("\nSaliendo...");
                         return;
                     }
-                    default -> System.out.println("Opción no válida. Intente de nuevo.");
+                    default -> System.out.println("\nOpción no válida. Intente de nuevo.");
                 }
             } catch (IOException ex) {
-                System.err.println("Error de entrada/salida: " + ex.getMessage());
+                System.err.println("\nError de entrada/salida: " + ex.getMessage());
             }
         }
+    }
+
+    public void MenuChains() {
+
     }
         
 }
