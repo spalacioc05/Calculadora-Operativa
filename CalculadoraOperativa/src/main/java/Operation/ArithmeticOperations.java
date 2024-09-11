@@ -25,17 +25,16 @@ public class ArithmeticOperations implements ArithmeticInterface {
 
     @Override
     public double divide(double a, double b) {
-        
         if (b == 0) {
-            throw new IllegalArgumentException("No se puede dividir por cero");
+            return Double.NaN; // Devuelve NaN si b es 0
         }
         return a / b;
     }
 
     @Override
     public double module(double a, double b) {
-        if (b == 0){
-            throw new IllegalArgumentException("No se puede modular por cero");
+        if (b == 0) {
+            return Double.NaN; // Devuelve NaN si b es 0
         }
         return a % b;
     }
@@ -87,15 +86,15 @@ public class ArithmeticOperations implements ArithmeticInterface {
     @Override
     public double increaseDivide(double a, double b) {
         if (b == 0) {
-            throw new IllegalArgumentException("No se puede dividir por cero");
+            return Double.NaN; // Devuelve NaN si b es 0
         }
         return a /= b;
     }
 
     @Override
     public double increaseModule(double a, double b) {
-        if (b == 0){
-            throw new IllegalArgumentException("No se puede modular por cero");
+        if (b == 0) {
+            return Double.NaN; // Devuelve NaN si b es 0
         }
         return a %= b;
     }
@@ -107,4 +106,3 @@ public class ArithmeticOperations implements ArithmeticInterface {
     }
     
 }
- 
