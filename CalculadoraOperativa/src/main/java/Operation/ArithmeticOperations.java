@@ -87,8 +87,7 @@ public class ArithmeticOperations implements ArithmeticInterface {
     @Override
     public double increaseDivide(double a, double b) {
         if (b == 0) {
-            System.out.println("No se puede dividir por cero");
-            return 0;
+            throw new IllegalArgumentException("No se puede dividir por cero");
         }
         return a /= b;
     }
@@ -96,8 +95,7 @@ public class ArithmeticOperations implements ArithmeticInterface {
     @Override
     public double increaseModule(double a, double b) {
         if (b == 0){
-            System.out.println("No se puede modular por cero");
-            return 0;
+            throw new IllegalArgumentException("No se puede modular por cero");
         }
         return a %= b;
     }
