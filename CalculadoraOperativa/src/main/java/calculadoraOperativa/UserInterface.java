@@ -78,7 +78,7 @@ public class UserInterface {
         System.out.println("1. Cambio binario");
         System.out.println("2. Operaciones con bits");
         System.out.println("3. Posicion");
-        System.out.println("3. Salir");
+        System.out.println("4. Salir");
     }
 
     private void procesarOpcionMenuBinary(int opcion, BinaryOperations binaryOperations) throws IOException {
@@ -110,7 +110,7 @@ public class UserInterface {
             }
             case 4 -> {
                 System.out.println("\nSaliendo...");
-                return;
+                System.exit(0);
             }
             default -> System.out.println("\nOpcion no valida. Intente de nuevo.");
         }
@@ -147,7 +147,7 @@ public class UserInterface {
             case 3 -> realizarOperacionesIncrementales(arithmeticOperations);
             case 4 -> {
                 System.out.println("\nSaliendo...");
-                return;
+                System.exit(0);
             }
             default -> System.out.println("\nOpcion no valida. Intente de nuevo.");
         }
@@ -188,23 +188,37 @@ public class UserInterface {
     }
 
     private void evaluarPrioridadOperadores(ArithmeticOperations arithmeticOperations) throws IOException {
-        int cantidadNumeros = Lectura.tecladoInt(bIn, "\n¿Cuantos numeros va a ingresar?: ");
-        double resultado = Lectura.tecladoDouble(bIn, "Ingrese el primer numero: \n");
-
-        for (int i = 1; i < cantidadNumeros; i++) {
-            String operador = Lectura.tecladoLinea(bIn, "\nIngrese el operador (+, -, *, /): ");
-            double numero = Lectura.tecladoDouble(bIn, "Ingrese el siguiente numero: \n");
-
-            switch (operador) {
-                case "+" -> resultado = arithmeticOperations.add(resultado, numero);
-                case "-" -> resultado = arithmeticOperations.subtract(resultado, numero);
-                case "*" -> resultado = arithmeticOperations.multiply(resultado, numero);
-                case "/" -> resultado = arithmeticOperations.divide(resultado, numero);
-                default -> System.out.println("\nOperador no valido. Intente de nuevo.");
-            }
+        double a = Lectura.tecladoDouble(bIn, "\nIngrese el primer numero: ");
+        double b = Lectura.tecladoDouble(bIn, "Ingrese el segundo numero: ");
+        double c = Lectura.tecladoDouble(bIn, "Ingrese el tercer numero: ");
+        double d = Lectura.tecladoDouble(bIn, "Ingrese el cuarto numero: \n");
+    
+        mostrarOpcionesOperaciones();
+    
+        int opcion = Lectura.tecladoInt(bIn, "\nSeleccione una opcion: ");
+        realizarOperacionSeleccionada(opcion, arithmeticOperations, a, b, c, d);
+    }
+    
+    private void mostrarOpcionesOperaciones() {
+        System.out.println("\nSeleccione una operacion:");
+        System.out.println("1. a + b * (c - d)");
+        System.out.println("2. a! + (b - c) / 2");
+        System.out.println("3. (a + b) * (c - d)");
+        System.out.println("4. a^b + c / d");
+        System.out.println("5. sqrt(a) + b^c - d");
+        System.out.println("6. abs(a - b) + c * d");
+    }
+    
+    private void realizarOperacionSeleccionada(int opcion, ArithmeticOperations arithmeticOperations, double a, double b, double c, double d) {
+        switch (opcion) {
+            case 1 -> System.out.println("Resultado: " + (a + b * (c - d)));
+            case 2 -> System.out.println("Resultado: " + (arithmeticOperations.factorial(a) + (b - c) / 2));
+            case 3 -> System.out.println("Resultado: " + ((a + b) * (c - d)));
+            case 4 -> System.out.println("Resultado: " + (Math.pow(a, b) + c / d));
+            case 5 -> System.out.println("Resultado: " + (Math.sqrt(a) + Math.pow(b, c) - d));
+            case 6 -> System.out.println("Resultado: " + (Math.abs(a - b) + c * d));
+            default -> System.out.println("Opcion no valida. Intente de nuevo.");
         }
-
-        System.out.println("\nResultado: " + resultado);
     }
 
     public void MenuChains() throws IOException {
