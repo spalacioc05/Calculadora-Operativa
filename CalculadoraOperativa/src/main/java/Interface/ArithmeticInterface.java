@@ -21,11 +21,16 @@ public interface ArithmeticInterface {
     double cubeRoot(double a);
     double absoluteValue(double a);
     double factorial(double a);
-    double increaseAdd(double a, double b);
-    double increaseSubtract(double a, double b);
-    double increaseMultiply(double a, double b);
-    double increaseDivide(double a, double b);
-    double increaseModule(double a, double b);
+    double increaseAdd(double a, double b, double c);
+    double increaseSubtract(double a, double b, double c);
+    double increaseMultiply(double a, double b, double c);
+    double increaseDivide(double a, double b, double c);
+    double increaseModule(double a, double b, double c);
     String positiveOrNegative(double a);
+    boolean mayor(double a, double b);
+    boolean menor(double a, double b);
+    boolean mayorIgual(double a, double b);
+    boolean menorIgual(double a, double b);
+    
     
 }

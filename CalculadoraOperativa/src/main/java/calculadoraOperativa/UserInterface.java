@@ -136,8 +136,9 @@ public class UserInterface {
         System.out.println("\nSeleccione una opcion:");
         System.out.println("1. Operaciones con dos numeros");
         System.out.println("2. Operaciones de incrementos");
-        System.out.println("3. Prioridad entre operadores");
-        System.out.println("4. Salir");
+        System.out.println("3. Operaciones de condicionales");
+        System.out.println("4. Prioridad entre operadores");
+        System.out.println("5. Salir");
     }
 
     private void procesarOpcionMenuArithmetic(int opcion, ArithmeticOperations arithmeticOperations) throws IOException {
@@ -145,7 +146,8 @@ public class UserInterface {
             case 1 -> realizarOperacionesAritmeticas(arithmeticOperations);
             case 2 -> evaluarPrioridadOperadores(arithmeticOperations);
             case 3 -> realizarOperacionesIncrementales(arithmeticOperations);
-            case 4 -> {
+            case 4 -> evaluarOperacionesCondicionales(arithmeticOperations);
+            case 5 -> {
                 System.out.println("\nSaliendo...");
                 System.exit(0);
             }
@@ -177,13 +179,14 @@ public class UserInterface {
 
     private void realizarOperacionesIncrementales(ArithmeticOperations arithmeticOperations) throws IOException {
         double a = Lectura.tecladoDouble(bIn, "\nIngrese el numero base: ");
-        double b = Lectura.tecladoDouble(bIn, "Ingrese el numero en el que sera incrementado: \n");
-        
-        System.out.println("Incremento: " + arithmeticOperations.increaseAdd(a, b));
-        System.out.println("Decremento: " + arithmeticOperations.increaseSubtract(a, b));
-        System.out.println("Multiplicacion: " + arithmeticOperations.increaseMultiply(a, b));
-        System.out.println("Division: " + arithmeticOperations.increaseDivide(a, b));
-        System.out.println("Modulo: " + arithmeticOperations.increaseModule(a, b));
+        double b = Lectura.tecladoDouble(bIn, "Ingrese el numero en el que sera incrementado: ");
+        double c = Lectura.tecladoDouble(bIn, "Ingrese la cantidad de veces que quiere que itere el ciclo: \n");
+
+        System.out.println("Incremento: " + arithmeticOperations.increaseAdd(a, b, c));
+        System.out.println("Decremento: " + arithmeticOperations.increaseSubtract(a, b, c));
+        System.out.println("Multiplicacion: " + arithmeticOperations.increaseMultiply(a, b, c));
+        System.out.println("Division: " + arithmeticOperations.increaseDivide(a, b, c));
+        System.out.println("Modulo: " + arithmeticOperations.increaseModule(a, b, c));
         
     }
 
@@ -292,5 +295,18 @@ public class UserInterface {
             case 9 -> System.exit(0);
             default -> System.out.println("\nOpcion no valida. Intente de nuevo.");
         }
+    }
+
+    public void evaluarOperacionesCondicionales(ArithmeticOperations arithmeticOperations) throws IOException {
+        double a = Lectura.tecladoDouble(bIn, "\nIngrese el primer numero: ");
+        double b = Lectura.tecladoDouble(bIn, "Ingrese el segundo numero: \n");
+
+        System.out.println(a + " > " + b + " : " + arithmeticOperations.mayor(a, b));
+        System.out.println(a + " < " + b + " : " + arithmeticOperations.menor(a, b));
+        System.out.println(a + " >= " + b + " : " + arithmeticOperations.mayorIgual(a, b));
+        System.out.println(a + " <= " + b + " : " + arithmeticOperations.menorIgual(a, b));
+        System.out.println(a + " es " + arithmeticOperations.positiveOrNegative(a));
+        System.out.println(b + " es " + arithmeticOperations.positiveOrNegative(b));
+        
     }
 }
